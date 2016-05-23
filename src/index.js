@@ -8,15 +8,12 @@ function check(cardNumber) {
     // TODO: implement card number checking
     var odd = 0,
     	even = 0,
-    	digit, i;
+    	digit, i, j=0;
 
-    //reverse the string
-    cardNumber = cardNumber.split('').reverse().join('');
-
-    for (i=0; i<cardNumber.length; i++) {
+    for (i=cardNumber.length-1; i>=0; i--) {
     	digit = parseInt(cardNumber.charAt(i));
-    	//if position of numnber is even
-    	if ((i+1) % 2 == 0) {
+    	//IF EVEN
+    	if ((j+1) % 2 == 0) {
     		digit *= 2
     		if(digit > 9) {
     			digit -= 9;
@@ -28,6 +25,7 @@ function check(cardNumber) {
     		// IF ODD
     		odd += digit;
     	}
+        j++;
     }
 
     return (odd + even) % 10 == 0
